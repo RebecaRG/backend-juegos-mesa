@@ -1,17 +1,33 @@
 {
   "name": "backend-juegos-mesa",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend services for a board game website, featuring user management, game listings, and interactive features, all powered by a MySQL database.",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "Node.js",
+    "Express"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.9.6",
+    "nodemailer": "^6.9.13",
     "sequelize": "^6.37.3"
   },
   "devDependencies": {
