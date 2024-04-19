@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenev from 'dotenv';
 import { testConnection } from './db.js';
+import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import eventosRoutes from './routes/eventosRoutes.js';
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 await testConnection();
 
 // Configurar rutas
+app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/eventos', eventosRoutes)
 
