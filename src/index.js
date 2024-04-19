@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenev from 'dotenv';
 import { testConnection } from './db.js';
 import userRoutes from './routes/userRoutes.js';
+import eventosRoutes from './routes/eventosRoutes.js';
 
 dotenev.config();
 
@@ -21,6 +22,7 @@ await testConnection();
 
 // Configurar rutas
 app.use('/user', userRoutes);
+app.use('/eventos', eventosRoutes)
 
 // Iniciar el servidor
 app.listen(3000, () => {
