@@ -7,9 +7,11 @@ import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import eventosRoutes from './routes/eventosRoutes.js';
 import lugaresRoutes from './routes/lugaresRoutes.js';
+import productosRoutes from './routes/productosRoutes.js';
 import './models/lugarModel.js';
 import './models/lugarTipoModel.js';
 import './associations.js';
+import './models/productoModel.js';
 
 
 dotenev.config();
@@ -30,7 +32,9 @@ await testConnection();
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/eventos', eventosRoutes);
-app.use('/', lugaresRoutes);
+app.use('/lugares', lugaresRoutes);
+app.use('/juegos', productosRoutes);
+
 
 // Iniciar el servidor
 app.listen(3000, () => {
