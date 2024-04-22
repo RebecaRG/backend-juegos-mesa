@@ -8,6 +8,9 @@ import ProductoParte from './models/productoPartesModel.js';
 import ProductoTematizacion from './models/productoTematizacionModel.js';
 import Componente from './models/componenteModel.js';
 import ProductoComponente from './models/productoComponenteModel.js';
+import User from './models/userModel.js';
+import UserJuego from './models/usersJuegosModel.js';
+
 
 //LUGAR
 Lugar.belongsTo(LugarTipo, {
@@ -89,6 +92,17 @@ Componente.belongsToMany(Producto, {
     foreignKey: 'id_componente',
     otherKey: 'id_juego',
     as: 'productos'
+});
+
+//USERJUEGO
+UserJuego.belongsTo(User, {
+    foreignKey: 'user_id', 
+    as: 'usuario'
+});
+
+UserJuego.belongsTo(Producto, {
+    foreignKey: 'juego_id', 
+    as: 'juego'
 });
 
 
