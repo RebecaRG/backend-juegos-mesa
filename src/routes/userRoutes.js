@@ -2,9 +2,8 @@
 import { Router } from 'express';
 import { getUserById} from '../controllers/userController.js';
 
-
 import authenticateToken from '../middlewares/authenticateToken.js';
-import { idValidator, nameValidator } from '../validations/generic.Validation.js'
+import { idValidator } from '../validations/generic.Validation.js'
 
 
 const router = Router();

@@ -6,12 +6,15 @@ import RecoveryToken from '../models/recoveryTokenModel.js';
 import sendEmail from "../utils/email/sendEmail.js";
 import { validationResult } from 'express-validator';
 import { serialize } from 'cookie';
+import { Op } from 'sequelize';
+
 // Creación de funciones personalizadas
 import { esPar, contraseniasCoinciden } from '../utils/utils.js';
 
 const clientURL = process.env.CLIENT_URL;
 
 export const register = async (req, res) => {
+  console.log("req.body:", req.body);
   try {
     const errors = validationResult(req);
 
@@ -20,18 +23,32 @@ export const register = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password, name, surname } = req.body;
-    // Verificar si ya existe un usuario con el mismo correo electrónico
-    const existingUser = await User.findOne({ where: { email }});
+    const { email, password, name, surname, username } = req.body;  // Asegúrate de incluir 'username'
+    // Verificar si ya existe un usuario con el mismo correo electrónico o username
+    const existingUser = await User.findOne({
+      where: {
+        [Op.or]: [
+          { email: email }, 
+          { username: username }
+        ]
+      }
+    });
     if (existingUser) {
       return res.status(400).json({
         code: -2,
-        message: 'Ya existe un usuario con el mismo correo electrónico'
+        message: 'Ya existe un usuario con el mismo correo electrónico o nombre de usuario'
       });
     }
     // Crear un nuevo usuario
     const hashedPassword = await bcrypt.hash(password, Number(process.env.BCRYPT_SALT));
-    const newUser = new User({ email, password: hashedPassword, name, surname, status: 1 });
+    const newUser = new User({
+      email, 
+      password: hashedPassword, 
+      name, 
+      surname, 
+      username, // Asegúrate de pasar esto al modelo
+      status: 1
+    });
     await newUser.save();
 
     // Generar un token de acceso y lo guardo en una cookie segura (httpOnly)
@@ -59,6 +76,7 @@ export const register = async (req, res) => {
     });
   }
 };
+
 
 export const login = async (req, res) => {
   try {

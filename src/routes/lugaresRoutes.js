@@ -1,9 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
 import { getLugaresConTipo } from '../controllers/lugaresController.js';
 import { validateUpdateLugar, handleErrors } from '../validations/lugares.Validation.js';
 
-const router = express.Router();
+const router = Router();
 
-router.get('/lugares', validateUpdateLugar, handleErrors, getLugaresConTipo);
+router.get('/', validateUpdateLugar, handleErrors, getLugaresConTipo);
 
 export default router;
