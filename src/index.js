@@ -9,6 +9,10 @@ import eventosRoutes from './routes/eventosRoutes.js';
 import lugaresRoutes from './routes/lugaresRoutes.js';
 import productosRoutes from './routes/productosRoutes.js';
 import usersJuegosRoutes from './routes/userJuegosRoutes.js';
+import PartidasRealizadasRoutes from './routes/partidasRealizadasRoutes.js';
+import PartidasParticipantesRoutes from './routes/partidasParticipantesRoutes.js';
+
+
 import './models/lugarModel.js';
 import './models/lugarTipoModel.js';
 import './associations.js';
@@ -36,7 +40,11 @@ app.use('/user', userRoutes);
 app.use('/eventos', eventosRoutes);
 app.use('/lugares', lugaresRoutes);
 app.use('/juegos', productosRoutes);
-app.use('/user',usersJuegosRoutes)
+app.use('/user',usersJuegosRoutes);
+app.use('/partidas', PartidasRealizadasRoutes);
+app.use('/participantes', PartidasParticipantesRoutes);
+
+
 
 
 // Iniciar el servidor

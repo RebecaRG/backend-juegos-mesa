@@ -10,6 +10,8 @@ import Componente from './models/componenteModel.js';
 import ProductoComponente from './models/productoComponenteModel.js';
 import User from './models/userModel.js';
 import UserJuego from './models/usersJuegosModel.js';
+import PartidaRealizada from './models/partidaRealizadaModel.js';
+import PartidaParticipante from './models/partidaParticipanteModel.js';
 
 
 //LUGAR
@@ -105,6 +107,22 @@ UserJuego.belongsTo(Producto, {
     as: 'juego'
 });
 
+//PARTIDASREALIZADAS
+PartidaRealizada.belongsTo(Producto, {
+    foreignKey: 'juego_id', 
+    as: 'juego'
+});
+
+//PARTIDAPARTICIPANTE
+PartidaParticipante.belongsTo(PartidaRealizada, {
+    foreignKey: 'partidas_realizadas_id', 
+    as: 'partida'
+});
+
+PartidaParticipante.belongsTo(User, {
+    foreignKey: 'user_id', 
+    as: 'usuario'
+});
 
 
 
