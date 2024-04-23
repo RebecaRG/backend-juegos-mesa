@@ -1,7 +1,7 @@
 import { body } from 'express-validator';
 
 
-export const loginValidator = [
+const loginValidator = [
     body("email").isEmail().withMessage("Proporcione un correo electrónico válido"),
     body("password")
         .exists()
@@ -12,7 +12,7 @@ export const loginValidator = [
         .withMessage("La contraseña debe tener al menos 5 caracteres")
 ]
 
-export const registerValidator = [
+const registerValidator = [
     body("email").isEmail().withMessage("Proporcione un correo electrónico válido"),
     body("password")
         .exists()
@@ -31,12 +31,11 @@ export const registerValidator = [
     body("surname").isString().withMessage("El apellido debe ser una cadena de texto")
 ]
 
-export const forgotPasswordValidator = [
+const forgotPasswordValidator = [
     body("email").isEmail().withMessage("Proporcione un correo electrónico válido")
 ];
 
-
-export const changePasswordValidator = [
+const changePasswordValidator = [
     body("token")
         .exists()
         .withMessage("El token es obligatorio"),
@@ -49,3 +48,4 @@ export const changePasswordValidator = [
         .withMessage("La contraseña debe tener al menos 5 caracteres")
 ];
 
+export { loginValidator, registerValidator, forgotPasswordValidator, changePasswordValidator}
