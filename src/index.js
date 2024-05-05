@@ -24,7 +24,12 @@ dotenev.config();
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:4200',  
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 

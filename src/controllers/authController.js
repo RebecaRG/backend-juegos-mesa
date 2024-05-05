@@ -23,6 +23,7 @@ export const register = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
+
     const { email, password, name, surname, username } = req.body;  // Asegúrate de incluir 'username'
     // Verificar si ya existe un usuario con el mismo correo electrónico o username
     const existingUser = await User.findOne({
@@ -67,14 +68,17 @@ export const register = async (req, res) => {
       code: 1,
       message: 'Usuario registrado correctamente',
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      code: -100,
-      message: 'Ha ocurrido un error al registrar el usuario',
-      error: error,
-    });
-  }
+   } catch (error) {
+
+        console.error("Error al registrar el usuario:", error);
+
+        // Devuelve un mensaje de error con más detalles
+        res.status(500).json({
+            code: -100,
+            message: 'Ha ocurrido un error al registrar el usuario',
+            error: error.message || error
+        });
+    }
 };
 
 
@@ -295,3 +299,18 @@ export const logout = async (req, res) => {
     message: 'Sesión cerrada - Token eliminado',
   });
 }
+export const checkAuthStatus = (req, res) => {
+    try {
+        if (req.user) {
+            res.status(200).json(true); 
+        } else {
+            res.status(200).json(false); 
+        }
+    } catch (error) {
+        console.error('Error al verificar el estado de autenticación:', error);
+        res.status(500).json({
+            code: -100,
+            message: 'Error al verificar el estado de autenticación'
+        });
+    }
+};
