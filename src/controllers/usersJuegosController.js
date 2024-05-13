@@ -5,7 +5,7 @@ export const getUserJuegos = async (req, res) => {
         const userId = req.params.userId;
         const userJuegos = await UserJuego.findAll({
             where: { user_id: userId },
-            include: ['juego']
+            include: ['juego', 'usuario']
         });
         res.json(userJuegos);
     } catch (error) {
