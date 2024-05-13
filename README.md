@@ -21,6 +21,7 @@ Backend desarrollado con Express y Sequelize para Playteca, complementando el fr
 - Importa el archivo `juegos_mesa_web.sql` dentro de esta base de datos utilizando la función de importación en PHPMyAdmin.
 
 📁 **Estructura de Archivos Importantes**
+
 Dentro de la carpeta sql del repositorio, encontrarás el archivo `juegos_mesa_web.sql`. Este archivo es crucial para configurar tu entorno de desarrollo local. Contiene todas las instrucciones SQL necesarias para crear las tablas de la base de datos relacionales y, opcionalmente, cargar datos de muestra. Asegúrate de importarlo a tu base de datos local para comenzar a desarrollar con una estructura de datos predefinida.
 
 🔧 **Tecnologías**
@@ -35,4 +36,5 @@ Dentro de la carpeta sql del repositorio, encontrarás el archivo `juegos_mesa_w
 - `npm run dev`: Inicia el servidor en modo desarrollo usando Nodemon.
 
 🤝 **Contribuir**
+
 ¡Tus ideas para mejorar o expandir son bienvenidas! Crea un pull request o abre un issue.
