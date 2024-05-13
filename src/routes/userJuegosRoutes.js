@@ -6,8 +6,8 @@ import authenticateToken from '../middlewares/authenticateToken.js';
 const router = Router();
 
 router.get('/:userId/juegos', authenticateToken, getUserJuegos);
-router.post('/juegos', authenticateToken, userJuegosValidation, addUserJuego);
-router.put('/juegos/:id', authenticateToken, userJuegosValidation, updateUserJuego);
-router.delete('/users/juegos/:id', authenticateToken, deleteUserJuego);
+router.post('/juegos',  userJuegosValidation, addUserJuego);
+router.put('/juegos/:id', userJuegosValidation, updateUserJuego);
+router.delete('/juegos/:id', deleteUserJuego);
 
 export default router;
