@@ -1,6 +1,3 @@
-
-![Logo de Playteca](assets/playtecalogo.jpg)
-
 # Backend Playteca Web 🧩
 Backend desarrollado con Express y Sequelize para Playteca, complementando el frontend en playteca-web. Utiliza JavaScript y dotenv para una configuración eficiente y segura.
 
@@ -12,11 +9,11 @@ Backend desarrollado con Express y Sequelize para Playteca, complementando el fr
 
 🚀 **Pasos**
 1. Clona y navega al repositorio:
-git clone <url_del_repositorio_backend>
-cd <directorio_del_proyecto>
+- git clone <url_del_repositorio_backend>
+- cd <directorio_del_proyecto>
 
 2. Instala dependencias:
-npm install
+- npm install
 
 
 📦 **Configuración de la Base de Datos**
