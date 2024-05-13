@@ -23,7 +23,13 @@ const authenticateToken = async (req, res, next) => {
       });
     }
 
-    req.user = user;
+    req.user = {
+      id_user: user.id_user,
+      username: user.username,
+      name: user.name,
+      surname: user.surname,
+      email: user.email
+    };
     next();
   } catch (error) {
     console.error(error);
