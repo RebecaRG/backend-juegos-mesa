@@ -7,10 +7,10 @@ import { validateCreateEvento, validateGetEvento, validateUpdateEvento } from '.
 
 const router = Router();
 
-router.get('/', authenticateToken, getEventos);
-router.get('/:id', authenticateToken, validateGetEvento, getEvento);
-router.post('/', authenticateToken, validateCreateEvento, postEvento);
-router.put('/:id', authenticateToken, validateUpdateEvento, updateEvento);
-router.delete('/:id', authenticateToken, validateGetEvento, deleteEvento);
+router.get('/', getEventos);
+router.get('/:id', validateGetEvento, getEvento);
+router.post('/', validateCreateEvento, postEvento);
+router.put('/:id', validateUpdateEvento, updateEvento);
+router.delete('/:id', validateGetEvento, deleteEvento);
 
 export default router;
