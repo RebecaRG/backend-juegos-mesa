@@ -13,11 +13,15 @@ export const getUserById = async (req, res) => {
     const { id } = req.params;
 
     // Buscar un usuario por su ID en la base de datos
-    const user = await User.findByPk(id).select('-password');
+    const user = await User.findByPk(id, {
+      attributes: { exclude: ['password'] },
+    });
+
+    // Si no se encuentra el usuario, devolver un error 404
     if (!user) {
       return res.status(404).json({
         code: -6,
-        message: 'Usuario no encontrado'
+        message: 'Usuario no encontrado',
       });
     }
 
