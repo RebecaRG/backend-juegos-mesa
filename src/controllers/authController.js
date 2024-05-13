@@ -127,6 +127,7 @@ export const login = async (req, res) => {
       message: 'Inicio de sesión correcto',
       data: {
         user: {
+          id_user: user.id_user,
           name: user.name,
           surname: user.surname,
           email: user.email
@@ -300,17 +301,23 @@ export const logout = async (req, res) => {
   });
 }
 export const checkAuthStatus = (req, res) => {
-    try {
-        if (req.user) {
-            res.status(200).json(true); 
-        } else {
-            res.status(200).json(false); 
-        }
-    } catch (error) {
-        console.error('Error al verificar el estado de autenticación:', error);
-        res.status(500).json({
-            code: -100,
-            message: 'Error al verificar el estado de autenticación'
-        });
+  try {
+    if (req.user) {
+      res.status(200).json({
+        isAuthenticated: true,
+        userId: req.user.id_user
+      });
+    } else {
+      res.status(200).json({
+        isAuthenticated: false,
+        userId: null
+      });
     }
+  } catch (error) {
+    console.error('Error al verificar el estado de autenticación:', error);
+    res.status(500).json({
+      code: -100,
+      message: 'Error al verificar el estado de autenticación'
+    });
+  }
 };
