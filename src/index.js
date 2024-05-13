@@ -41,7 +41,7 @@ await testConnection();
 
 // Configurar rutas
 app.use('/auth', authRoutes);
-app.use('/user', userRoutes);
+app.use('/users', userRoutes);
 app.use('/eventos', eventosRoutes);
 app.use('/lugares', lugaresRoutes);
 app.use('/juegos', productosRoutes);
